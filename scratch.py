@@ -50,3 +50,12 @@ for website in website_arr[:NUM_WEBSITES]:
 
 with open("website_cookies.json", "w") as file:
     json.dump(website_to_cookies, file, indent=4)
+
+for website, cookies_arr in website_to_cookies.items():
+    if not cookies_arr:
+        continue
+    for cookie in cookies_arr:
+        name = cookie["name"]
+        cookie["classficiation"] = name_to_category.get(name)
+with open("website_cookies.json", "w") as file:
+    json.dump(website_to_cookies, file, indent=4)
