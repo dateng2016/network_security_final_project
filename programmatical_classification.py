@@ -3,7 +3,7 @@ import pandas as pd
 from selenium.webdriver.chrome.options import Options
 import json
 
-NUM_WEBSITES = 100
+NUM_WEBSITES = 10
 
 def get_cookies(url: str):
     # Set up Chrome options for headless mode
@@ -18,7 +18,7 @@ def get_cookies(url: str):
         cookies = driver.get_cookies()
         return cookies
     except Exception as e:
-        print(f"Error occurred -> {e}")
+        print(f"Error occurred")
     finally:
         driver.quit()
 
@@ -55,6 +55,6 @@ for website, cookies_arr in website_to_cookies.items():
     for cookie in cookies_arr:
         name = cookie["name"]
         cookie["classficiation"] = name_to_category.get(name)
-        
+
 with open("website_cookies.json", "w") as file:
     json.dump(website_to_cookies, file, indent=4)
