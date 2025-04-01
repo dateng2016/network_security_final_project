@@ -37,11 +37,11 @@ def process_file(input_path, output_path):
         if not isinstance(cookies, list):
             continue
         for cookie in cookies:
-            if cookie.get("classficiation") is None:
+            if cookie.get("classification") is None:
                 print(f"[Info] Classifying cookie: {cookie.get('name')}")
                 new_class = classify_cookie(cookie)
                 if new_class:
-                    cookie["classificiation"] = new_class
+                    cookie["classification"] = new_class
                 time.sleep(1)  # Avoid hitting rate limits
 
     with open(output_path, 'w') as f:
