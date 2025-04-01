@@ -54,7 +54,7 @@ for website, cookies_arr in website_to_cookies.items():
         continue
     for cookie in cookies_arr:
         name = cookie["name"]
-        cookie["classficiation"] = name_to_category.get(name)
+        cookie["classification"] = name_to_category.get(name)
 
 with open("website_cookies.json", "w") as file:
     json.dump(website_to_cookies, file, indent=4)
