@@ -4,11 +4,22 @@ from selenium.webdriver.chrome.options import Options
 import json
 
 NUM_WEBSITES = 10
+IS_MOBILE = True
+
+if IS_MOBILE:
+    COOKIES_JSON_FILE_NAME = "website_cookies.json"
+else:
+    COOKIES_JSON_FILE_NAME = "mobile_cookies.json"
+
 
 def get_cookies(url: str):
     # Set up Chrome options for headless mode
     options = Options()
     options.add_argument("--headless")  # Run in headless mode (no GUI)
+    if IS_MOBILE:
+        options.add_argument(
+            "--user-agent=Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Mobile/15E148 Safari/604.1"
+        )
 
     # Initialize WebDriver with the options
     driver = webdriver.Chrome(options=options)
@@ -56,5 +67,5 @@ for website, cookies_arr in website_to_cookies.items():
         name = cookie["name"]
         cookie["classification"] = name_to_category.get(name)
 
-with open("website_cookies.json", "w") as file:
+with open(COOKIES_JSON_FILE_NAME, "w") as file:
     json.dump(website_to_cookies, file, indent=4)
