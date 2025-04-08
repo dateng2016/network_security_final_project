@@ -48,4 +48,5 @@ def process_file(input_path, output_path):
         json.dump(data, f, indent=2)
 
 if __name__ == "__main__":
-    process_file("website_cookies.json", "output.json")
+    process_file("website_cookies.json", "website_output.json")
+    process_file("mobile_cookies.json", "mobile_output.json")

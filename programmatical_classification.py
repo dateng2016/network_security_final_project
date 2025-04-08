@@ -20,7 +20,6 @@ parser.add_argument(
     "--mobile", action="store_true", help="Run browser in mobile emulation mode"
 )
 args = parser.parse_args()
-
 NUM_WEBSITES = 1000
 IS_MOBILE = args.mobile
 
