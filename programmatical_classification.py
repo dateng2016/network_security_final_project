@@ -6,7 +6,7 @@ import json
 NUM_WEBSITES = 10
 IS_MOBILE = True
 
-if IS_MOBILE:
+if not IS_MOBILE:
     COOKIES_JSON_FILE_NAME = "website_cookies.json"
 else:
     COOKIES_JSON_FILE_NAME = "mobile_cookies.json"
