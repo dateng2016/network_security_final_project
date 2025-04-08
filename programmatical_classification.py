@@ -2,14 +2,17 @@ from selenium import webdriver
 import pandas as pd
 from selenium.webdriver.chrome.options import Options
 import json
-
+import argparse
+parser = argparse.ArgumentParser(description="Scrape cookies in desktop or mobile mode.")
+parser.add_argument("--mobile", action="store_true", help="Run browser in mobile emulation mode")
+args = parser.parse_args()
 NUM_WEBSITES = 10
-IS_MOBILE = True
+IS_MOBILE = args.mobile
 
 if IS_MOBILE:
-    COOKIES_JSON_FILE_NAME = "website_cookies.json"
-else:
     COOKIES_JSON_FILE_NAME = "mobile_cookies.json"
+else:
+    COOKIES_JSON_FILE_NAME = "website_cookies.json"
 
 
 def get_cookies(url: str):
