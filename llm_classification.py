@@ -15,7 +15,7 @@ def classify_cookie(cookie):
 
     try:
         response = openai.ChatCompletion.create(
-            model="gpt-4",
+            model="gpt-4o-mini",
             messages=[{"role": "user", "content": prompt}],
             temperature=0,
         )
@@ -42,7 +42,6 @@ def process_file(input_path, output_path):
                 new_class = classify_cookie(cookie)
                 if new_class:
                     cookie["classification"] = new_class
-                time.sleep(1)  # Avoid hitting rate limits
 
     with open(output_path, 'w') as f:
         json.dump(data, f, indent=2)
