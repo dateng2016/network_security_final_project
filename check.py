@@ -2,7 +2,7 @@
 import json
 
 # Specify the path to your JSON file
-file_path = 'output.json'
+file_path = 'website_output.json'
 
 # Open and read the JSON file
 with open(file_path, 'r') as file:
